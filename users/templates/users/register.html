@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 {% load tailwind_filters %}
 {% block login %}
-
+<h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Register</h1>
 <form method="post" class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
     {% csrf_token %}
-    <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Login</h1>
-    <div class="space-y-4">
-        {{ form|crispy }}
-    </div>
+    <div class="space-y-4 justify-center">
+    {{ form|crispy }}
     <div class="mt-6 flex justify-center ">
         <button
             class="group relative inline-block text-sm font-medium text-white focus:ring-3 focus:outline-hidden"
@@ -15,13 +13,10 @@
         >
             <span class="absolute inset-0 border border-red-600"></span>
             <span class="block border border-red-600 bg-red-600 px-12 py-3 transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1">
-                Login
+                Register
             </span>
         </button>
     </div>
-    <p class="text-center">
-            ¿No es esta registrado?
-            <a href="{% url 'register' %}" class="text-red-600 hover:text-red-800">Registrate</a>
-        </p>
+    </div>
 </form>
-{% endblock login %}
+{% endblock %}
