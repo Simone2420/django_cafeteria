@@ -16,7 +16,7 @@
                     d="M2 21h18v-2H2v2zM20 8h-2V5h2v3zm0-5H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V3h10v10z"
                     fill="#DC2626"
                     />
-                    <h2 class="text-xl font-bold px-2 ">Cafeteria el Chaman</h2>
+                    <h2 class="text-xl font-bold px-2 hidden sm:block">Cafeteria el Chaman</h2>
                     </svg>
                 </a>
 
@@ -40,13 +40,16 @@
         </header>
     
     {% if user.is_authenticated %}
-    <h1 class="text-3xl font-bold text-center">Bienvenido, {{ user.username }}</h1>
+    <h3 class="text-2xl font-bold text-center">Bienvenido, {{ user.username }}</h3>
     <div class="container mx-auto px-4">
         {% block content %}
         {% endblock %}
         <form method="post" action="{% url 'logout' %}" class="max-w-full mx-auto p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
             {% csrf_token %}
-            <button type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cerrar sesión</button>
+            <button 
+            type="submit" 
+            class="block w-full rounded-md border border-red-700 bg-red-700 px-5 py-3 text-sm font-medium tracking-widest text-white uppercase transition-colors hover:bg-white hover:text-red-700"
+            >Cerrar sesión</button>
         </form>
     </div>
     {% else %}

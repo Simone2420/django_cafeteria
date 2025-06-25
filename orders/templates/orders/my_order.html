@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% if user.is_authenticated %}
 {% block content %}
-    <h1>{{order}}</h1>
+    <h1 class="text-xl font-bold text-center">{{order.order_date}}</h1>
+
+    {% for order_product in order.order_products.all %}
+        <p class="text-xl font-bold text-center">{{order_product.product.name}} x {{order_product.quantity}}</p>
+    {% empty %}
+    <p class="text-xl font-bold text-center">No hay productos en la orden</p>
+
+    {% endfor %}
+
+
+
 {% endblock content %}
+
 {% else %}
 {% block asklogin %}
     <div class="flex flex-col justify-center items-center">

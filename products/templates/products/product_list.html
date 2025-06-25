@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="text-3xl font-bold underline">
+<h1 class="text-2xl font-bold text-center">
     Lista de Productos
-
     </h1>
 <ul>
     {% for product in products %}
@@ -12,7 +11,7 @@
         <img 
         src="{{ product.image.url }}" 
         alt="{{ product.name }}" 
-        style="width: 200px;"
+        class="lg:w-2/5 h-64 rounded-t-3xl mx-auto "
         >
     {% endif %}
 
@@ -36,15 +35,18 @@
     </p>
     </div>
     </a>
-    {% comment "" %}
-    <form class="mt-4">
+    
+    <form class="mt-4" method="post" action="{% url 'create_order' %}">
+      {% csrf_token %}
+      <input type="hidden" name="product" value="{{ product.id }}">
       <button
-        class="block w-full rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium tracking-widest text-white uppercase transition-colors hover:bg-white hover:text-indigo-900"
+        class="block w-full rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium tracking-widest text-white uppercase transition-colors hover:bg-white hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        type="submit"
       >
-        Add to Cart
+        Agregar al pedido
       </button>
     </form>
-    {% endcomment %}
+    
     
     {% endfor %}
 </ul>
